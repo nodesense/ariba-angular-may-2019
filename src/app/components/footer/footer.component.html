@@ -1,0 +1,17 @@
+<div appHighlight>
+  <hr />
+  <p>Copyrights @{{year}}, {{company | lowercase}}</p>
+
+  <button (click)="sayHello()">
+    Hello
+  </button>
+
+  <p> Date {{today}} </p>
+
+  <p> Date | date => {{today | date:'fullDate' | uppercase}} </p>
+  <p> Discount {{discount}}, {{discount | number:'.4'}} 
+        Price {{discount | currency:'EUR':'symbol':'.6'}}
+
+
+  </p>
+</div>

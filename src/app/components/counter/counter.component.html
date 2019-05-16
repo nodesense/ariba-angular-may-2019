@@ -1,0 +1,83 @@
+<h4>Counter</h4>
+
+<p> 2 ^ 3 => {{2 | power:3}}</p>
+
+<p> 2  => {{2 | power}}</p>
+<p>count ^ 2 => {{count | power:2}}</p>
+<p>2 ^ count => {{2 | power:count}}</p>
+
+<!-- 
+  {{expression}} -- interpolation, evaluate the expression, convert result to string
+  [propertyName]="expression" - property binding
+  (eventName)="expression" - event binding
+  [()] - property + Event binding, two way binding
+  ?. - elvis operator, null/undefined check within template
+  # - template reference variable
+-->
+
+<p>Branch City {{branchAddress.city}}</p>
+<p>Address City {{address?.city}} </p>
+
+<p>Count = {{count}}</p>
+<p>Count + 1 = {{count + 1}}</p>
+
+<p>Counter in input</p>
+<input  [value]="count" />
+<input [value]="count + 2" />
+
+<p>with bind, [] converted into bind-</p>
+<input bind-value="count + 2" />
+
+
+
+<p>Two Way Binding [()] </p>
+
+<input name="count1" 
+      [(ngModel)]="count" 
+      type="number"
+      />
+
+<p>how [()] works? </p>
+
+
+<input name="count2" 
+       type="number"
+      [ngModel]="count"
+      (ngModelChange)="count = $event"
+      
+      />
+
+<button [disabled]="count %  2 == 0">
+  My Button
+</button>
+
+
+<button (click)="increment()">
+  +1
+</button>
+
+<button (click)="count = count - 1">
+  -1
+</button>
+  
+
+<p>() converts into on-</p>
+<button on-click="increment()">
+  +1
+</button>
+
+<!-- para1 is dom element, refers to p tag
+      yourName is dom element, refers to input tag
+
+-->
+<p #para1>
+  insert some text here
+</p>
+
+<input #yourName />
+
+<p> You entered {{yourName.value}}</p>
+
+<button (click)="para1.textContent = yourName.value">
+  Apply Name
+</button>

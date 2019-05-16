@@ -1,0 +1,21 @@
+<!-- Angular View -->
+
+<div>
+    <h2 appHighlight>Welcome {{appTitle}}</h2>
+    <app-header>
+    </app-header>
+ 
+
+    <!-- 3. place holder for the routed component -->
+    <router-outlet>
+    </router-outlet>
+
+
+    <!-- subscribe for event ()-->
+    <app-footer [company]="companyName"
+                [year]="copyrightYear + 1"
+                (footerEvent)="handleHello($event)"
+                >
+
+    </app-footer>
+</div>

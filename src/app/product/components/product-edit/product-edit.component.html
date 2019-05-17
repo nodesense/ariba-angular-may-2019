@@ -1,12 +1,33 @@
 <h2>Product Edit {{product.name}}</h2>
 
-<form (ngSubmit)="save()" >
+
+<p *ngIf="productForm.dirty">
+  Form Data Changed
+</p>
+
+<p *ngIf="productForm.invalid">
+  Invalid Form Data
+</p>
+
+<form (ngSubmit)="save()"  #productForm="ngForm" >
   Name
 
   <input name="name"
          [(ngModel)]="product.name"
 
+         required
+         minlength="2"
+
+         #productName="ngModel"
   />
+
+  <p *ngIf="productName.dirty"> 
+    Name changed
+  </p>
+
+  <p *ngIf="productName.invalid"> 
+    Invalid name 
+  </p>
 
   Price 
   <input name="price"
@@ -33,9 +54,11 @@
       </option>
   </select>
 
-  <button type='submit'>Save</button>
+  <button type='submit' [disabled]="productForm.invalid">Save</button>
 </form>
 
+ 
+<p>Product JSON</p>
 <pre>
   {{product | json}}
 </pre>

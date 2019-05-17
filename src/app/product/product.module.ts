@@ -11,7 +11,8 @@ import {Routes, RouterModule} from  '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'products',
+    // path: 'products',
+    path: '', // for lazy loading
     component: ProductHomeComponent,
     children: [ // nested navigation
         {

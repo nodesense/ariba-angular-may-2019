@@ -1,4 +1,5 @@
-import { ProductModule } from './product/product.module';
+// import { ProductModule } from './product/product.module';
+
 import { CartModule } from './cart/cart.module';
 import { NgModule } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -33,6 +34,12 @@ const routes: Routes = [
         path: 'about',
         component: AboutComponent
     },
+
+    {
+        path: 'products',
+        loadChildren: './product/product.module#ProductModule'
+    },
+
     {
         path: '**',
         component: NotFoundComponent
@@ -53,7 +60,7 @@ const routes: Routes = [
         FormsModule,
         SharedModule,
         CartModule,
-        ProductModule,
+      //  ProductModule,
         // 2. apply the routes to angular module
         RouterModule.forRoot(routes),
         HttpClientModule

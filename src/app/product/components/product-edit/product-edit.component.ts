@@ -1,10 +1,12 @@
 // product-edit.component.ts
 import { Product } from './../../models/product';
 import { ProductService } from './../../services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Brand } from '../../models/brand';
+
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-product-edit',
@@ -12,6 +14,9 @@ import { Brand } from '../../models/brand';
   styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
+
+  @ViewChild('productForm')
+  form: NgForm;
 
   product: Product = new Product();
   brands$: Observable<Brand[]>;
@@ -37,6 +42,17 @@ export class ProductEditComponent implements OnInit {
   }
 
   save() {
+
+    if (this.form.pristine) {
+      alert('No changes found');
+      return;
+    }
+
+    if (this.form.invalid) {
+      alert('invalid form');
+      return;
+    }
+
     this.productService
         .saveProduct(this.product)
         .subscribe(savedProduct => {

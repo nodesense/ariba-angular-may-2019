@@ -1,3 +1,16 @@
+```
+
+git clone https://github.com/nodesense/ariba-angular-may-2019
+
+cd ariba-angular-may-2019
+
+npm install
+
+ng serve
+
+
+```
+
 
 
 ng g module shared

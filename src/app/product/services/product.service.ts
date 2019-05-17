@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { Brand } from '../models/brand';
 
+import {filter} from 'rxjs/operators'
+
 console.log('env', environment);
 
 @Injectable({
@@ -23,8 +25,6 @@ export class ProductService {
           .http
           .get<Product[]>(`${environment.apiEndPoint}/api/products`);
   }
-
-
 
   getProduct(id: number): Observable<Product> {
     return this.http

@@ -4,67 +4,72 @@ import { async,
 
 import { AboutComponent } from './about.component';
 import { SharedModule } from './../../shared/shared.module';
+import { PowerPipe } from 'src/app/shared/pipes/power.pipe';
 
 fdescribe('AboutComponent', () => {
-let component: AboutComponent;
-let element: any;
-let fixture: ComponentFixture<AboutComponent>;
+  let component: AboutComponent;
+  let element: any;
+  let fixture: ComponentFixture<AboutComponent>;
 
-beforeEach(async(() => {
-TestBed.configureTestingModule({
-declarations: [ AboutComponent ],
-imports: [SharedModule]
-})
-.compileComponents(); // JIT html to JS
-}));
+  beforeEach(async(() => {
+      TestBed.configureTestingModule({
+          declarations: [ 
+              AboutComponent,
+              PowerPipe
+            ],
+        //  imports: [SharedModule]
+      })
+      .compileComponents(); // JIT html to JS
+  }));
 
-beforeEach(() => {
-fixture = TestBed.createComponent(AboutComponent);
-component = fixture.componentInstance;
+  beforeEach(() => {
+      fixture = TestBed.createComponent(AboutComponent);
+      component = fixture.componentInstance;
 
-fixture.detectChanges();
-});
+      fixture.detectChanges();
+  });
 
-it('should create', () => {
-expect(component).toBeTruthy();
-element = fixture.nativeElement;
-expect(element.querySelectorAll('li').length)
-                                .toBe(2);
-});
-
-
-it('should clear all li when toggle', () => {
-expect(component).toBeTruthy();
-element = fixture.nativeElement;
-expect(element.querySelectorAll('li').length).toBe(2);
-
-component.showMembers = false; // list should disappear
-
-fixture.detectChanges();
-expect(element.querySelectorAll('li').length).toBe(0);
-})
+  it('should create', () => {
+    expect(component).toBeTruthy();
+    element = fixture.nativeElement;
+    expect(element.querySelectorAll('li').length)
+                                    .toBe(2);
+  });
 
 
-it('should create add member', () => {
-expect(component).toBeTruthy();
-element = fixture.nativeElement;
-component.addMember('Nila');
-fixture.detectChanges();
+  it('should clear all li when toggle', () => {
+    expect(component).toBeTruthy();
+    element = fixture.nativeElement;
+    expect(element.querySelectorAll('li').length).toBe(2);
 
-expect(element.querySelectorAll('li').length).toBe(3);
+    component.showMembers = false; // list should disappear
 
-expect(element.querySelectorAll('li')[2].textContent)
-    .toContain('Nila');
-})
+    fixture.detectChanges();
+
+    expect(element.querySelectorAll('li').length).toBe(0);
+  })
 
 
-it('should empty list', () => {
-expect(component).toBeTruthy();
-element = fixture.nativeElement;
-component.empty();
-fixture.detectChanges();
+  it('should create add member', () => {
+      expect(component).toBeTruthy();
+      element = fixture.nativeElement;
+      component.addMember('Nila');
+      fixture.detectChanges();
 
-expect(element.querySelectorAll('li').length).toBe(0);
-expect(element.querySelectorAll('ul').length).toBe(1);
-});
+      expect(element.querySelectorAll('li').length).toBe(3);
+
+      expect(element.querySelectorAll('li')[2].textContent)
+          .toContain('Nila');
+      })
+
+
+  it('should empty list', () => {
+    expect(component).toBeTruthy();
+    element = fixture.nativeElement;
+    component.empty();
+    fixture.detectChanges();
+
+    expect(element.querySelectorAll('li').length).toBe(0);
+    expect(element.querySelectorAll('ul').length).toBe(1);
+  });
 });

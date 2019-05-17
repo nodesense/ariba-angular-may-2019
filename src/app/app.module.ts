@@ -1,3 +1,4 @@
+import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
 import { NgModule } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -13,6 +14,9 @@ import {FormsModule} from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 
 import {Routes, RouterModule} from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+import {HttpClientModule} from '@angular/common/http';
 
 // 1. configure the routes
 
@@ -28,6 +32,10 @@ const routes: Routes = [
     {
         path: 'about',
         component: AboutComponent
+    },
+    {
+        path: '**',
+        component: NotFoundComponent
     }
 ];
 
@@ -45,8 +53,10 @@ const routes: Routes = [
         FormsModule,
         SharedModule,
         CartModule,
+        ProductModule,
         // 2. apply the routes to angular module
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        HttpClientModule
     ],
 
     declarations: [
@@ -57,7 +67,8 @@ const routes: Routes = [
         HomeComponent,
         AboutComponent,
         CounterComponent,
-        ContactComponent 
+        ContactComponent,
+        NotFoundComponent 
         //HeaderComponent,
         // FooterComponent, etc
     ],

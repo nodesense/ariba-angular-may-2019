@@ -20,7 +20,6 @@ ng serve
  ng g c components/not-found
 ```
 
-
 ```
 ng g module shared
 
@@ -44,4 +43,17 @@ ng g class cart/models/cart-item
 ```
 
 
+```
 
+
+ng g module product
+
+ng g c product/components/product-list
+ng g c product/components/product-edit
+ng g c product/components/product-home
+ng g service product/services/product
+ng g class product/models/product
+ng g class product/models/brand
+
+
+```

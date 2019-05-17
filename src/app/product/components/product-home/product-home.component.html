@@ -1,0 +1,15 @@
+<!-- product-home.component.html -->
+  <a routerLink="/products" 
+  class="button" 
+  routerLinkActive="success"
+  [routerLinkActiveOptions]="{exact: true}"
+  >List</a> 
+
+<a routerLink="/products/create" 
+  class="button" 
+  routerLinkActive="success">Create</a> 
+
+ <!-- for product list/edit pages -->
+  <router-outlet>
+
+  </router-outlet>

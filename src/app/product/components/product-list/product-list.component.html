@@ -1,0 +1,33 @@
+<h2>Product List</h2>
+
+<a routerLink="/products/create" 
+   class="button">
+   Create
+</a>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Year</th>
+    <th>Del</th>
+    <th>+Cart</th>
+  </tr>
+
+  <tr *ngFor="let product of products$ | async">
+    <td>
+     <a [routerLink]="['/products', 'edit', product.id]">
+      {{product.name}}
+    </a>
+    </td>
+    <td>{{product.price}}</td>
+    <td>{{product.year}}</td>
+    <td>
+      <button (click)="deleteProduct(product.id)">X</button>
+    </td>
+
+    <td>
+        <button (click)="addToCart(product)">+Cart</button>
+    </td>
+  </tr>
+</table>

@@ -14,7 +14,7 @@ import { Product } from '../../models/product';
 
 import { ProductListComponent } from '../product-list/product-list.component';
 import { SharedModule } from '../../../shared/shared.module';
-
+// fdescribe
 fdescribe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
@@ -35,15 +35,16 @@ fdescribe('ProductListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,
+        // HttpClientModule,
         RouterModule.forRoot([]),
         SharedModule,
         CartModule,
-        FormsModule
+        // FormsModule
 
       ],
       declarations: [ ProductListComponent ],
       providers: [
+        // for the Router 
         {provide: APP_BASE_HREF, useValue: '/'},
         {
           provide: ProductService, // not created
@@ -58,6 +59,8 @@ fdescribe('ProductListComponent', () => {
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
 
+    // get the instance of product service injected inot the component
+    // instance of ProductMockService
     productService = fixture.debugElement.injector.get(ProductService);
 
     fixture.detectChanges();
@@ -70,7 +73,6 @@ fdescribe('ProductListComponent', () => {
 
     expect(element.querySelectorAll('tr')[1].textContent)
           .toContain('Nexus Phone');
-
     
     expect(element.querySelectorAll('tr')[1].textContent)
     .toContain('10000');

@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressComponent implements OnInit {
 
-  constructor() { }
+  city = 'Bangalore';
+
+  constructor() { 
+    
+  }
 
   ngOnInit() {
   }

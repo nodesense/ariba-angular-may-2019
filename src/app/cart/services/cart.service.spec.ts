@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { CartService } from './cart.service';
 import { CartItem } from '../models/cart-item';
-
-fdescribe('CartService', () => {
+// fdescribe
+describe('CartService', () => {
 
   beforeEach(() => TestBed.configureTestingModule({}));
 

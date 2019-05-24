@@ -24,6 +24,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
               private cartService: CartService) {
 
    }
+   
 
   ngOnInit() {
     this.products$ = this.productService.getProducts();

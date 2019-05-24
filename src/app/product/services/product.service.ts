@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { Brand } from '../models/brand';
 
-import {filter} from 'rxjs/operators'
+import {filter, map} from 'rxjs/operators';
+
 
 console.log('env', environment);
 
@@ -23,7 +24,13 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     return this
           .http
-          .get<Product[]>(`${environment.apiEndPoint}/api/products`);
+          .get<Product[]>(`${environment.apiEndPoint}/api/products`)
+          .pipe (map ( products => {
+            return products.map (product => {
+              product.price = product.price - 100;
+              return product;
+            });
+          }));
   }
 
   getProduct(id: number): Observable<Product> {

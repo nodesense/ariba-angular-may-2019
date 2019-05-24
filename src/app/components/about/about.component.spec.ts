@@ -5,6 +5,7 @@ import { async,
 import { AboutComponent } from './about.component';
 import { SharedModule } from './../../shared/shared.module';
 import { PowerPipe } from 'src/app/shared/pipes/power.pipe';
+// fdescribe
 
 fdescribe('AboutComponent', () => {
   let component: AboutComponent;
@@ -47,7 +48,7 @@ fdescribe('AboutComponent', () => {
     fixture.detectChanges();
 
     expect(element.querySelectorAll('li').length).toBe(0);
-  })
+  });
 
 
   it('should create add member', () => {
